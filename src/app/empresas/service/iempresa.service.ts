@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class IempresaService {
 
-  constructor() { }
+export interface IempresaService {
+  list(): Observable<any>;
+  getById(id: number): Observable<any>;
+  insert(empresa: any): Observable<any>;
+  delete(id: number): Observable<any>;
+  update(empresa: any): Observable<any>;
 }
