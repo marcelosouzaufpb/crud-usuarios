@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IempresaService } from './iempresa.service';
+import { EmpresaDTOModule } from '../models/empresa-dto.module';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,13 @@ export class EmpresaService implements IempresaService {
   getById(id: number): import("rxjs").Observable<any> {
     throw new Error("Method not implemented.");
   }
-  insert(empresa: any): import("rxjs").Observable<any> {
+  insert(empresa: EmpresaDTOModule): import("rxjs").Observable<any> {
     throw new Error("Method not implemented.");
   }
   delete(id: number): import("rxjs").Observable<any> {
     throw new Error("Method not implemented.");
   }
-  update(empresa: any): import("rxjs").Observable<any> {
+  update(empresa: EmpresaDTOModule): import("rxjs").Observable<any> {
     throw new Error("Method not implemented.");
   }
 }
