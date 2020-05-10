@@ -7,9 +7,10 @@
                 <input type="text" formControlName="cnpj" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && form.cnpj.errors }" />
                 <div *ngIf="submitted && form.cnpj.errors" class="invalid-feedback">
-                    <div *ngIf="form.cnpj.errors.required">CNPJ is mandatory</div>
+                    <div *ngIf="form.cnpj.errors.required">Name is mandatory</div>
                 </div>
             </div>
+
             <div class="form-group col-12">
                 <label><strong>Nome Fantasia</strong></label>
                 <input type="text" formControlName="nomeFantasia" class="form-control"
@@ -44,6 +45,7 @@
             </div>
             <div class="form-group col-12">
                 <label><strong>Funcionario</strong></label>
+
                 <input type="text" formControlName="funcionario" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && form.visao.errors }" />
                 <div *ngIf="submitted && form.funcionario.errors" class="invalid-feedback">

@@ -4,6 +4,9 @@ import { EmpresaService } from '../service/empresa.service';
 import { Router } from '@angular/router';
 import { EmpresasModule } from '../empresas.module';
 import { EmpresaDTOModule } from '../models/empresa-dto.module';
+import { UsuarioService } from 'src/app/usuarios/service/usuario.service';
+import { UsuarioDTO } from 'src/app/usuarios/models/usuarioDTO.entity';
+import { UsuarioMockService } from 'src/app/usuarios/service/usuariomock.service';
 
 @Component({
   selector: 'app-empresa-create',
@@ -15,7 +18,21 @@ export class EmpresaCreateComponent implements OnInit {
   private formGroup: FormGroup;
   private submitted: boolean = false;
 
-  constructor(private service: EmpresaService, private formBuilder: FormBuilder, private route: Router) { }
+  users: UsuarioDTO[] = [];
+  selectorUsers: UsuarioDTO[]  = [];
+
+  constructor(
+    private service: EmpresaService,
+    private usuarioService: UsuarioMockService,
+    private formBuilder: FormBuilder,
+    private route: Router
+  ) {
+    this.usuarioService.list().subscribe(res => {
+    this.users = res;
+    }, err => {
+      console.log(err);
+    });
+  }
 
   ngOnInit() {
     this.generateForm();
@@ -28,8 +45,12 @@ export class EmpresaCreateComponent implements OnInit {
   generateForm() {
     this.formGroup = this.formBuilder.group(
       {
-        name: ['', [Validators.required]],
-        email: ['', [Validators.email, Validators.required]],
+        cnpj: ['', [Validators.required]],
+        nomeFantasia: ['', [Validators.required]],
+        razaoSocial: ['', [Validators.required]],
+        misao: ['', [Validators.required]],
+        visao: ['', [Validators.required]],
+        funcionario: ['', []],
       }
     );
   }
@@ -40,7 +61,7 @@ export class EmpresaCreateComponent implements OnInit {
       return;
     }
 
-    const user: EmpresaDTOModule = new EmpresaDTOModule(
+    const empresa: EmpresaDTOModule = new EmpresaDTOModule(
       null,
       this.formGroup.controls["cnpj"].value,
       this.formGroup.controls["nomeFantasia"].value,
@@ -50,7 +71,7 @@ export class EmpresaCreateComponent implements OnInit {
       this.formGroup.controls["funcionario"].value,
     );
 
-    this.service.insert(user).subscribe(
+    this.service.insert(empresa).subscribe(
       result => {
         this.route.navigate(['/empresas']);
       }, err => {

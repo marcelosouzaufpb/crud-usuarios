@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmpresaListComponent } from './empresa-list/empresa-list.component';
-import { RouterModule } from '@angular/router';
 import { EmpresasRoutingModule } from './empresa-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmpresaService } from './service/empresa.service';
 import { EmpresamockService } from './service/empresamock.service';
 import { EmpresaCreateComponent } from './empresa-create/empresa-create.component';
-
 
 
 @NgModule({
@@ -16,7 +14,8 @@ import { EmpresaCreateComponent } from './empresa-create/empresa-create.componen
     CommonModule,
     EmpresasRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
+
   ],
   providers: [
     {
