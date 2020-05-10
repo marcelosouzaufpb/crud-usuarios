@@ -4,6 +4,8 @@ import { EmpresaListComponent } from './empresa-list/empresa-list.component';
 import { RouterModule } from '@angular/router';
 import { EmpresasRoutingModule } from './empresa-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmpresaService } from './service/empresa.service';
+import { EmpresamockService } from './service/empresamock.service';
 
 
 
@@ -14,6 +16,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EmpresasRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+  ],
+  providers: [
+    {
+      provide: EmpresaService,
+      useClass: EmpresamockService
+    }
   ]
 })
 export class EmpresasModule { }
