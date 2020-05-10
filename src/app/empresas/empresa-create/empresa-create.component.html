@@ -1,0 +1,61 @@
+<div class="container">
+    <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+        <div class="form-row">
+            <div class="form-group col-12">
+                <label><strong>CNPJ</strong></label>
+                <input type="text" formControlName="cnpj" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && form.cnpj.errors }" />
+                <div *ngIf="submitted && form.cnpj.errors" class="invalid-feedback">
+                    <div *ngIf="form.cnpj.errors.required">CNPJ is mandatory</div>
+                </div>
+            </div>
+            <div class="form-group col-12">
+                <label><strong>Nome Fantasia</strong></label>
+                <input type="text" formControlName="nomeFantasia" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && form.nomeFantasia.errors }" />
+                <div *ngIf="submitted && form.nomeFantasia.errors" class="invalid-feedback">
+                    <div *ngIf="form.nomeFantasia.errors.required">Nome Fantasia is mandatory</div>
+                </div>
+            </div>
+            <div class="form-group col-12">
+                <label><strong>Razao Social</strong></label>
+                <input type="text" formControlName="razaoSocial" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && form.razaoSocial.errors }" />
+                <div *ngIf="submitted && form.razaoSocial.errors" class="invalid-feedback">
+                    <div *ngIf="form.razaoSocial.errors.required">Razao Social is mandatory</div>
+                </div>
+            </div>
+            <div class="form-group col-12">
+                <label><strong>Misao</strong></label>
+                <input type="text" formControlName="misao" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && form.misao.errors }" />
+                <div *ngIf="submitted && form.misao.errors" class="invalid-feedback">
+                    <div *ngIf="form.misao.errors.required">Misao is mandatory</div>
+                </div>
+            </div>
+            <div class="form-group col-12">
+                <label><strong>Visao</strong></label>
+                <input type="text" formControlName="visao" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && form.visao.errors }" />
+                <div *ngIf="submitted && form.visao.errors" class="invalid-feedback">
+                    <div *ngIf="form.visao.errors.required">Visao is mandatory</div>
+                </div>
+            </div>
+            <div class="form-group col-12">
+                <label><strong>Funcionario</strong></label>
+                <input type="text" formControlName="funcionario" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && form.visao.errors }" />
+                <div *ngIf="submitted && form.funcionario.errors" class="invalid-feedback">
+                    <div *ngIf="form.funcionario.errors.required">Funcionario is mandatory</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-primary mr-1">Adicionar</button>
+            <button *ngIf="!isEditing" class="btn btn-secondary" type="reset" (click)="onReset()">Resetar</button>
+        </div>
+
+    </form>
+</div>
